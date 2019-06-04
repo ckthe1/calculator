@@ -12,20 +12,20 @@ function onReady() {
     $('.numbersButton').on('click', displayCalculation);
 
     getAllNumbers();
-
 }//end onReady
+
 function operatorSign() {
     operatorSign = $(this).val();
     console.log(operatorSign);
 }
 let answer = 0;
+
 function getNumbers() {
     let firstNumbers = $('#firstNumberIn').val();
     let secondNumbers = $('#secondNumberIn').val();
     let equalSign = $('#equalButton').text();
     console.log(firstNumbers, secondNumbers, equalSign);
-    // $('#answerOut').empty();
-    // $('#results').empty();
+
     $.ajax({
         url: '/calculator',
         method: 'POST',
@@ -37,9 +37,42 @@ function getNumbers() {
 
         }
     }).then(function (response) {
-        // $('#answerOut').empty();
-        // $('#results').empty();
         getAllNumbers();
 
     });//end then function
 }//end getNumbers
+
+function clearInputs() {
+    $('#firstNumberIn').val('');
+    $('#secondNumberIn').val('');
+    $('#results').empty();
+}//end clearInputs
+
+function getAllNumbers() {
+    $.ajax({ // ajax go to server
+        url: '/calculator',
+        method: 'GET'//request to server
+    }).then(function (response) {
+        $('#ulResults').empty();
+ 
+        response.forEach(function (calculator) {
+            $('#ulResults').prepend(`
+
+             <li id = "liResults">
+            ${calculator.firstNumbers}
+            ${calculator.operatorSign}
+            ${calculator.secondNumbers}
+            ${calculator.equalSign}
+            ${calculator.answer}
+            </li>
+            `)
+        });// end forEach
+        // clearInputs()
+    });//end response function
+}//end getAllNumbers
+
+function displayCalculation() {
+    let numberSeven = ('#sevenButton').text();
+    console.log(numberSeven);
+
+};//end displayCalculation
