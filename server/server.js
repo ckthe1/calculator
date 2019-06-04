@@ -17,3 +17,23 @@ app.get('/calculator', (req, res) => {// get info from server
     console.log(calculator);
     res.send(calculator);
 });
+app.post('/calculator', (req, res) => {
+    console.log(calculator);
+    rockThatBody = req.body;
+    calculator.push(req.body);
+    answer(req.body);
+    res.sendStatus(201);
+
+});
+
+function answer() {
+    if (req.body.operatorSign == '+') {
+        req.body.answer = Number(req.body.firstNumbers) + Number(req.body.secondNumbers);
+    } else if (req.body.operatorSign == '-') {
+        req.body.answer = Number(req.body.firstNumbers) - Number(req.body.secondNumbers);
+    } else if (req.body.operatorSign == '*') {
+        req.body.answer = Number(req.body.firstNumbers) * Number(req.body.secondNumbers);
+    } else if (req.body.operatorSign == '/') {
+        req.body.answer = Number(req.body.firstNumbers) / Number(req.body.secondNumbers);
+    }
+}
