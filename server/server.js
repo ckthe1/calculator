@@ -19,7 +19,7 @@ app.get('/calculator', (req, res) => {// get info from server
 });
 app.post('/calculator', (req, res) => {
     console.log(calculator);
-    rockThatBody = req.body;
+    // rockThatBody = req.body;
     calculator.push(req.body);
     answer(req.body);
     res.sendStatus(201);
