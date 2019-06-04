@@ -26,6 +26,8 @@ app.post('/calculator',(req,res) =>  {
     
 });
 
+
+// calculation is done below
 function answer() {
     if (rockThatBody.operatorSign == '+') {
         rockThatBody.answer = Number(rockThatBody.firstNumbers) + Number(rockThatBody.secondNumbers);

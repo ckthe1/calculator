@@ -1,8 +1,9 @@
 console.log('in js');
 $(document).ready(onReady);
+
 function onReady() {
     console.log('in Jquery');
-
+    //get input values onReady
     $('#equalButton').on('click', getNumbers);
     $('#clearButton').on('click', clearInputs);
     $('#additionButton').on('click', operatorSign);
@@ -56,8 +57,9 @@ function getAllNumbers() {
         $('#ulResults').empty();
  
         response.forEach(function (calculator) {
+            // display in descendant order
             $('#ulResults').prepend(`
-
+                
              <li id = "liResults">
             ${calculator.firstNumbers}
             ${calculator.operatorSign}
