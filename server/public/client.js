@@ -58,6 +58,9 @@ function getAllNumbers() {
  
         response.forEach(function (calculator) {
             // display in descendant order
+           console.log('response', response);
+           
+            if(response.length <= '10'){
             $('#ulResults').prepend(`
                 
              <li id = "liResults">
@@ -68,6 +71,9 @@ function getAllNumbers() {
             ${calculator.answer}
             </li>
             `)
+                return false;               
+            }
+             
         });// end forEach
         // clearInputs()
     });//end response function
